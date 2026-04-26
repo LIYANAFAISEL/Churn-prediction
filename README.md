@@ -3,10 +3,11 @@
 Predicting customer churn for a telecom company using the Telco Customer Churn dataset.
 
 ## Project phases
-- [x] Phase 1: Data exploration & EDA
-- [x] Phase 2: Preprocessing & feature engineering
-- [ ] Phase 3: Modelling
-- [ ] Phase 4: Evaluation
+- [x] Phase 1: Data exploration and EDA
+- [x] Phase 2: Preprocessing, model training and feature importance
+- [ ] Phase 3: FastAPI backend
+- [ ] Phase 4: Angular frontend
+- [ ] Phase 5: Docker + deployment
 
 ## Phase 1 — Key findings from EDA
 - 26.5% overall churn rate — roughly 1 in 4 customers leave
