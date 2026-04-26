@@ -2,10 +2,18 @@
 
 Predicting customer churn for a telecom company using the Telco Customer Churn dataset.
 
+## Tech stack
+| Layer | Technology |
+|---|---|
+| Machine learning | Python, scikit-learn (Random Forest) |
+| Backend API | FastAPI |
+| Frontend | Angular |
+| Containerisation | Docker |
+
 ## Project phases
 - [x] Phase 1: Data exploration and EDA
 - [x] Phase 2: Preprocessing, model training and feature importance
-- [ ] Phase 3: FastAPI backend
+- [x] Phase 3: FastAPI backend — 4 endpoints, tested and working
 - [ ] Phase 4: Angular frontend
 - [ ] Phase 5: Docker + deployment
 
@@ -36,6 +44,21 @@ Predicting customer churn for a telecom company using the Telco Customer Churn d
 
 - Low F1 expected due to class imbalance (26.5% churn) — addressed with class_weight='balanced'
 - Feature importances confirm EDA findings: tenure, MonthlyCharges and contract type are the strongest predictors
+
+## Phase 3 — FastAPI Backend
+
+Built a REST API with 4 endpoints:
+
+| Endpoint | Description |
+|---|---|
+| `GET /` | Confirms API is running |
+| `GET /health` | Health check for deployment |
+| `POST /predict` | Takes customer data, returns churn prediction |
+| `GET /features` | Returns top feature importance scores |
+
+*In active development — updated weekly*
+
+---
 
 ## Dataset
 Telco Customer Churn available on [Kaggle](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)
