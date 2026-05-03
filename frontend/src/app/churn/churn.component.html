@@ -1,0 +1,308 @@
+<div class="page-wrapper">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>Customer Churn Prediction</h1>
+    <p>Enter customer details to predict churn risk</p>
+  </div>
+
+  <div class="content-wrapper">
+
+    <!-- LEFT: Input Form -->
+    <mat-card class="form-card">
+      <mat-card-header>
+        <mat-card-title>Customer Details</mat-card-title>
+        <mat-card-subtitle>Fill in the form or use a sample</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+
+        <!-- Quick fill buttons -->
+        <div class="prefill-row">
+          <button mat-stroked-button color="warn"
+                  (click)="prefillHighRisk()">
+            <mat-icon>warning</mat-icon>
+            High Risk Sample
+          </button>
+          <button mat-stroked-button color="primary"
+                  (click)="prefillLowRisk()">
+            <mat-icon>check_circle</mat-icon>
+            Low Risk Sample
+          </button>
+        </div>
+
+        <mat-divider style="margin: 16px 0"></mat-divider>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+          <!-- Row 1 -->
+          <div class="form-row">
+            <mat-form-field appearance="outline">
+              <mat-label>Gender</mat-label>
+              <mat-select formControlName="gender">
+                <mat-option *ngFor="let g of genderOptions" [value]="g">
+                  {{g}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Senior Citizen</mat-label>
+              <mat-select formControlName="SeniorCitizen">
+                <mat-option [value]="0">No</mat-option>
+                <mat-option [value]="1">Yes</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Partner</mat-label>
+              <mat-select formControlName="Partner">
+                <mat-option *ngFor="let o of yesNoOptions" [value]="o">
+                  {{o}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="form-row">
+            <mat-form-field appearance="outline">
+              <mat-label>Dependents</mat-label>
+              <mat-select formControlName="Dependents">
+                <mat-option *ngFor="let o of yesNoOptions" [value]="o">
+                  {{o}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Tenure (months)</mat-label>
+              <input matInput type="number" formControlName="tenure"
+                     min="0" max="72">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Phone Service</mat-label>
+              <mat-select formControlName="PhoneService">
+                <mat-option *ngFor="let o of yesNoOptions" [value]="o">
+                  {{o}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <!-- Row 3 -->
+          <div class="form-row">
+            <mat-form-field appearance="outline">
+              <mat-label>Multiple Lines</mat-label>
+              <mat-select formControlName="MultipleLines">
+                <mat-option *ngFor="let o of multilineOptions" [value]="o">
+                  {{o}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Internet Service</mat-label>
+              <mat-select formControlName="InternetService">
+                <mat-option *ngFor="let o of internetOptions" [value]="o">
+                  {{o}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Online Security</mat-label>
+              <mat-select formControlName="OnlineSecurity">
+                <mat-option *ngFor="let o of internetServiceOptions"
+                            [value]="o">{{o}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <!-- Row 4 -->
+          <div class="form-row">
+            <mat-form-field appearance="outline">
+              <mat-label>Online Backup</mat-label>
+              <mat-select formControlName="OnlineBackup">
+                <mat-option *ngFor="let o of internetServiceOptions"
+                            [value]="o">{{o}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Device Protection</mat-label>
+              <mat-select formControlName="DeviceProtection">
+                <mat-option *ngFor="let o of internetServiceOptions"
+                            [value]="o">{{o}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Tech Support</mat-label>
+              <mat-select formControlName="TechSupport">
+                <mat-option *ngFor="let o of internetServiceOptions"
+                            [value]="o">{{o}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <!-- Row 5 -->
+          <div class="form-row">
+            <mat-form-field appearance="outline">
+              <mat-label>Streaming TV</mat-label>
+              <mat-select formControlName="StreamingTV">
+                <mat-option *ngFor="let o of internetServiceOptions"
+                            [value]="o">{{o}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Streaming Movies</mat-label>
+              <mat-select formControlName="StreamingMovies">
+                <mat-option *ngFor="let o of internetServiceOptions"
+                            [value]="o">{{o}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Paperless Billing</mat-label>
+              <mat-select formControlName="PaperlessBilling">
+                <mat-option *ngFor="let o of yesNoOptions" [value]="o">
+                  {{o}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <!-- Row 6 -->
+          <div class="form-row">
+            <mat-form-field appearance="outline">
+              <mat-label>Contract</mat-label>
+              <mat-select formControlName="Contract">
+                <mat-option *ngFor="let o of contractOptions" [value]="o">
+                  {{o}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Payment Method</mat-label>
+              <mat-select formControlName="PaymentMethod">
+                <mat-option *ngFor="let o of paymentOptions" [value]="o">
+                  {{o}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <!-- Row 7 — charges -->
+          <div class="form-row">
+            <mat-form-field appearance="outline">
+              <mat-label>Monthly Charges ($)</mat-label>
+              <input matInput type="number" formControlName="MonthlyCharges"
+                     min="0" step="0.01">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Total Charges ($)</mat-label>
+              <input matInput type="number" formControlName="TotalCharges"
+                     min="0" step="0.01">
+            </mat-form-field>
+          </div>
+
+          <!-- Submit -->
+          <button mat-raised-button color="primary"
+                  type="submit"
+                  [disabled]="form.invalid || loading"
+                  class="submit-btn">
+            <mat-icon>analytics</mat-icon>
+            Predict Churn
+          </button>
+
+        </form>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- RIGHT: Results -->
+    <div class="result-panel">
+
+      <!-- Loading -->
+      <div *ngIf="loading" class="loading-box">
+        <mat-spinner diameter="48"></mat-spinner>
+        <p>Analysing customer data...</p>
+      </div>
+
+      <!-- Error -->
+      <mat-card *ngIf="error" class="error-card">
+        <mat-card-content>
+          <mat-icon color="warn">error</mat-icon>
+          <p>{{ error }}</p>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Result -->
+      <div *ngIf="result && !loading">
+
+        <!-- Probability card -->
+        <mat-card class="result-card"
+                  [style.border-left]="'6px solid ' + getRiskColor()">
+          <mat-card-content>
+            <div class="result-header">
+              <mat-icon [style.color]="getRiskColor()" class="risk-icon">
+                {{ getRiskIcon() }}
+              </mat-icon>
+              <div>
+                <h2 class="probability">
+                  {{ result.churn_probability_pct }}
+                </h2>
+                <p class="prediction-label">{{ result.prediction }}</p>
+              </div>
+            </div>
+
+            <div class="risk-badge"
+                 [style.background-color]="getRiskColor()">
+              {{ result.risk_level }} Risk
+            </div>
+
+          </mat-card-content>
+        </mat-card>
+
+        <!-- Feature importance card -->
+        <mat-card class="factors-card">
+          <mat-card-header>
+            <mat-card-title>Top Contributing Factors</mat-card-title>
+            <mat-card-subtitle>
+              Features that influence churn risk most
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <div *ngFor="let factor of result.top_factors"
+                 class="factor-row">
+              <span class="factor-name">{{ factor.feature }}</span>
+              <div class="factor-bar-wrap">
+                <div class="factor-bar"
+                     [style.width]="factor.importance_pct"
+                     [style.background-color]="getRiskColor()">
+                </div>
+              </div>
+              <span class="factor-pct">{{ factor.importance_pct }}</span>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+      </div>
+
+      <!-- Placeholder when no result yet -->
+      <div *ngIf="!result && !loading && !error" class="placeholder">
+        <mat-icon class="placeholder-icon">insights</mat-icon>
+        <p>Fill in the form and click</p>
+        <p><strong>Predict Churn</strong> to see results</p>
+        <p style="margin-top: 12px; font-size: 13px; color: #aaa;">
+          Or use the sample buttons for a quick demo
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
