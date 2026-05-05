@@ -14,6 +14,8 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:4200",
         "http://localhost:80",
+        "http://localhost",
+        "https://churn-frontend-wgoc.onrender.com",  # update after frontend deploys
     ],
     allow_credentials=True,
     allow_methods=["*"],
