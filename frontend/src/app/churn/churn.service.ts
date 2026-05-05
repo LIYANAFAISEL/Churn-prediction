@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 export interface CustomerInput {
   gender: string;
@@ -42,7 +43,7 @@ export interface PredictionOutput {
   providedIn: 'root'
 })
 export class ChurnService {
-  private apiUrl = 'http://localhost:8000';
+  private apiUrl = '/api';
 
   constructor(private http: HttpClient) {}
 

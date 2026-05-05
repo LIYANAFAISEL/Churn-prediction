@@ -5,7 +5,7 @@ import os
 from schemas import CustomerInput, PredictionOutput, FeatureFactor
 
 # Paths — go one level up from api/ to find pkl files
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 MODEL_PATH   = os.path.join(BASE_DIR, 'churn_model.pkl')
 SCALER_PATH  = os.path.join(BASE_DIR, 'scaler.pkl')
