@@ -4,6 +4,8 @@ A full-stack ML web app that predicts whether a telecom customer will churn.
 
 **Live demo:** https://churn-frontend-712r.onrender.com
 
+![App Screenshot](screenshot.png)
+
 **API docs:** https://churn-api-wgoc.onrender.com/docs
 
 ---
