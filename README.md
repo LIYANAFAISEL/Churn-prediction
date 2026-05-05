@@ -31,23 +31,30 @@ and top 5 contributing features.
 
 ---
 
-## How to run locally
-
+## Run with Docker (recommended)
 ```bash
-# 1. Start API
+git clone https://github.com/LIYANAFAISEL/churn-prediction.git
+cd churn-prediction
+docker compose up
+```
+Open `http://localhost`
+
+---
+
+## Run locally
+```bash
+# API
 python -m venv venv
 venv\Scripts\activate
 cd api
-python -m uvicorn main:app --reload --port 8000
+python -m uvicorn main:app --port 8000
 
-# 2. Start frontend
+# Frontend (new terminal)
 cd frontend
 npm install
 ng serve
-
-# 3. Open
-http://localhost:4200
 ```
+Open `http://localhost:4200`
 
 ---
 
@@ -63,7 +70,8 @@ http://localhost:4200
 - [x] Phase 2: Preprocessing, model training and feature importance
 - [x] Phase 3: FastAPI backend
 - [x] Phase 4: Angular frontend
-- [ ] Phase 5: Docker + deployment
+- [x] Phase 5: Docker
+- [ ] Phase 6: Deployment
 
 ---
 
