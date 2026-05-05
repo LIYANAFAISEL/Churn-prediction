@@ -2,7 +2,9 @@
 
 A full-stack ML web app that predicts whether a telecom customer will churn.
 
-**Live demo:** *(coming soon)*
+**Live demo:** https://churn-frontend-712r.onrender.com
+
+**API docs:** https://churn-api-wgoc.onrender.com/docs
 
 ---
 
@@ -19,6 +21,7 @@ and top 5 contributing features.
 | Backend API | FastAPI |
 | Frontend | Angular 19 + Angular Material |
 | Containerisation | Docker |
+| Deployment | Render |
 
 ---
 
@@ -70,8 +73,7 @@ Open `http://localhost:4200`
 - [x] Phase 2: Preprocessing, model training and feature importance
 - [x] Phase 3: FastAPI backend
 - [x] Phase 4: Angular frontend
-- [x] Phase 5: Docker
-- [ ] Phase 6: Deployment
+- [x] Phase 5: Docker + deployment
 
 ---
 
